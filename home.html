@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .calculator {
+        width: 80%;
+        max-width: 400px; /* Set a max-width to prevent the calculator from becoming too wide on larger screens */
+        background-color: #3498db;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        border: 2px solid black; /* Add border to calculator */
+    }
+    .display {
+        width: 100%;
+        height: 80px;
+        font-size: 36px;
+        text-align: right;
+        background-color: #ecf0f1;
+        border-radius: 10px 10px 0 0;
+        padding: 10px;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        border-top: 2px solid black; /* Add border to top of buttons */
+        padding-top: 10px; /* Add padding to top of buttons */
+    }
+    button {
+        font-size: 24px;
+        padding: 20px;
+        background-color: #7f8c8d;
+        color: #fff;
+        border: 2px solid black; /* Add black border to buttons */
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%; /* Set button width to 100% to make them resizable */
+    }
+    button:hover {
+        background-color: #95a5a6;
+    }
+    button:active {
+        background-color: #34495e;
+    }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" class="display" id="display" readonly>
+    <div class="buttons">
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('+')">+</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('*')">x</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
+        <button onclick="clearDisplay()">C</button>
+    </div>
+</div>
+
+<script>
+    function appendToDisplay(value) {
+        document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (error) {
+            document.getElementById('display').value = 'Error';
+        }
+    }
+</script>
+
+</body>
+</html>
+
